@@ -27,7 +27,8 @@ app.get('/api/recipes', (req, res) => {
   Recipe.find({})
     .then((recipes) => {
       res.status(200).json(recipes);
-    });
+    })
+    .catch((err) => res.status(401).json({ error: err.message }));
 });
 
 app.get('/api/recipes/:id', (req, res, next) => {
